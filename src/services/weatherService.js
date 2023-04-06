@@ -17,7 +17,6 @@ const getWeatherData = (infoType, searchParams) => {
         .then((res) => res.json())
         .then((data) => data);
 };
-
 //Future Weather Data and Daily Forecast not available unless paid subscription... 
 
 // const formatCurrentWeather = (data) => {
@@ -71,6 +70,10 @@ const getWeatherData = (infoType, searchParams) => {
 //      return {...formattedCurrentWeather};
 //  };
 
-// const formatToLocalTime = (secs, zone, format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a") => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
+const formatToLocalTime = (secs, zone, format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a") => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
+
+ const iconUrlFromCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`
 
 export default getWeatherData;
+
+export { formatToLocalTime, iconUrlFromCode}

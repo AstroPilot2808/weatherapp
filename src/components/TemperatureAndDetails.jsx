@@ -68,6 +68,13 @@ function toHHMM (unix) {
      }else{
          updatedHr=prevHr-12
      }
+    let updateMin = null;
+    if (dateObject.getMinutes()<10) {
+        updateMin = "0"+dateObject.getMinutes()
+        console.log("Minutes is less than 10")
+    } else {
+        updateMin = dateObject.getMinutes()
+    }
     let meridiem = null;
     if (dateObject.getHours()<12){
         meridiem = "AM"
@@ -75,7 +82,7 @@ function toHHMM (unix) {
         meridiem = "PM"
     }
 
-    let finalTime = updatedHr+":"+dateObject.getMinutes()+" "+meridiem
+    let finalTime = updatedHr+":"+updateMin+" "+meridiem
 
     // let finalTime = dateObject.getHours()+":"+dateObject.getMinutes()
     return finalTime

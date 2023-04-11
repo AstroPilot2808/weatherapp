@@ -1,6 +1,6 @@
 import React from 'react'
 // Defining Array "Cities" in JavaScript with 5 terms
-function TopButtons() {
+function TopButtons({setQuery}) {
     const cities = [
         {
             id:1,
@@ -16,7 +16,7 @@ function TopButtons() {
         },
         {
             id:4,
-            title: 'Toroto'
+            title: 'Toronto'
         },
         {
             id:5,
@@ -26,7 +26,7 @@ function TopButtons() {
   return <div className="flex items-center justify-around my-6">
     {/* Iterating each element of the array one my one */}
     {cities.map((city) => (
-        <button key={city.id} className="text-white text-lg font-thin">{city.title}</button>
+        <button key={city.id} className="text-white text-lg font-thin" onClick={() => setQuery({ q: city.title})}>{city.title}</button>
     ))}
   </div>
 }

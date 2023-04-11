@@ -12,7 +12,7 @@ import { DateTime } from 'luxon';
 
 function App() {
 
-  const [query, setQuery] = useState({q: 'madurai'})
+  const [query, setQuery] = useState({q: 'pittsburgh'})
  // const [units, setUnits] = useState('metric')
   const [weather, setWeather] = useState(null)
 
@@ -31,8 +31,8 @@ function App() {
 
   return (
     <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-      <TopButtons />
-      <Inputs /> 
+      <TopButtons query={query} setQuery={setQuery} />
+      <Inputs query={query} setQuery={setQuery} /> 
 
       {weather && (
       <div>

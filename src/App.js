@@ -38,8 +38,8 @@ function App() {
       <div>
       <TimeAndLocation weather={weather}/>
       <TemperatureAndDetails weather ={weather}/>
-      <Forecast title="hourly forecast"/>
-      <Forecast title="daily forecast"/>
+      {/* <Forecast title="hourly forecast"/>
+      <Forecast title="daily forecast"/> */}
       </div>
       )}
 

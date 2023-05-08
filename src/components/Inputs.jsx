@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 
+//tempIndicator is a global variable that changes when units are converted
+
+//var tempIndicator = 'C'
+
 function Inputs({ setQuery }) {
   const [city, setCity] = useState("");
 
@@ -49,6 +53,11 @@ function Inputs({ setQuery }) {
     };
   }, [handleSearchClick]);
 
+  // function tempChanger(temp){
+  //   tempIndicator = temp
+   // forceUpdate() //Triggers Re-render so that all weather values can be updated based on Celsius/Fahrenheit
+  
+
   return (
     <div className="flex flex-row justify-center my-6">
       <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
@@ -72,13 +81,9 @@ function Inputs({ setQuery }) {
           className="text-white transition ease-out hover:scale-125"
         />
       </div>
-      <div className="flex flex-row w-1/4 items-center justify-center">
-        <button name="metric" className="text-xl text-white font-light hover:scale-125 transition ease-out">°C</button>
-        <p className="text-white text-xl mx-1">|</p>
-        <button name="imperial" className="text-xl text-white font-light hover:scale-125 transition ease-out">°F</button>
-      </div>
     </div>
   );
+  
 }
 
 export default Inputs;

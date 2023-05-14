@@ -16,16 +16,18 @@ function App() {
  // const [units, setUnits] = useState('metric')
   const [weather, setWeather] = useState(null)
 
-  useEffect(() =>{
+  useEffect(() => {
     const fetchWeather = async () => {
-      await getWeatherData ("weather" ,{...query}).then(
-        (data) => {
-          setWeather(data);
-          console.log(data)
-        }
-      )
+      try {
+        const data = await getWeatherData("weather", { ...query });
+        setWeather(data);
+        console.log(data);
+      } catch (error) {
+        console.log("Error fetching weather data:");
+        // Perform error handling here
+      }
     };
-
+  
     fetchWeather();
   }, [query]);
 

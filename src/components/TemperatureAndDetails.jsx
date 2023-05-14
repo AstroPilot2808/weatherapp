@@ -1,17 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import {
-    UilArrowUp,
-    UilArrowDown,
-    UilTemperature,
-    UilTear,
-    UilWind,
-    UilSun,
-    UilSunset,
-} from "@iconscout/react-unicons";
+  UilArrowUp,
+  UilArrowDown,
+  UilTemperature,
+  UilTear,
+  UilWind,
+  UilSun,
+  UilSunset,
+} from '@iconscout/react-unicons';
 import { iconUrlFromCode } from '../services/weatherService';
 
-function TemperatureAndDetails({weather: {main, sys, weather, wind}, units}) {
-    const [currentUnit, setCurrentUnit] = useState(units);
+function TemperatureAndDetails({ weather: weatherData, units }) {
+  const [currentUnit, setCurrentUnit] = useState(units);
 
   const toggleUnit = () => {
     setCurrentUnit(currentUnit === 'C' ? 'F' : 'C');
@@ -24,6 +24,11 @@ function TemperatureAndDetails({weather: {main, sys, weather, wind}, units}) {
       return value;
     }
   };
+
+  if (!weatherData) {
+    return <div>Loading...</div>; // or display an appropriate loading state
+  }
+  const { main, sys, weather, wind } = weatherData;
 
   return (
     <div>
@@ -69,8 +74,8 @@ function TemperatureAndDetails({weather: {main, sys, weather, wind}, units}) {
         </div>
     </div>
   )
-  
 }
+
 function toF(kelvin){
     var firstOperation = kelvin-273.15
     var secondOperation = 9/5

@@ -9,10 +9,20 @@ function Inputs({ setQuery }) {
   const [city, setCity] = useState("");
 
   const handleSearchClick = () => {
-    if (city !== '') {
+    if (isValidCity(city)) {
       setQuery({ q: city });
     }
+    else{
+      console.log("An error has occured")
+    }
   };
+
+  const validCityNames = ['New York', 'Los Angeles', 'London', 'Paris', 'Tokyo'];
+
+  function isValidCity(cityName) {
+    const normalizedCityName = cityName.trim().toLowerCase();
+    return validCityNames.includes(normalizedCityName);
+  }
 
   const handleLocationClick = () => {
     if (navigator.geolocation) {

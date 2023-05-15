@@ -4,7 +4,7 @@ import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 function Inputs({ setQuery }) {
   const [city, setCity] = useState("");
 
-  const handleSearchClick = async () => {
+  const handleSearchClick = useCallback(async () => {
     const response = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`
     );
@@ -17,7 +17,7 @@ function Inputs({ setQuery }) {
     } else {
       alert("Please Enter A Valid City!");
     }
-  };
+  }, [city, setQuery]);
 
   const handleLocationClick = () => {
     if (navigator.geolocation) {

@@ -23,12 +23,24 @@ function TopButtons({setQuery}) {
             title: 'Paris'
         }
     ]
-  return <div className="flex items-center justify-around my-6">
-    {/* Iterating each element of the array one my one */}
-    {cities.map((city) => (
-        <button key={city.id} className="text-white text-lg font-thin hover:underline hover:scale-110 transition-all duration-300" onClick={() => setQuery({ q: city.title})}>{city.title}</button>
-    ))}
-  </div>
+  return <div className="flex items-center justify-around mt-2 mb-6">
+  {/* Iterating each element of the array one by one */}
+  {cities.map((city) => (
+    <button
+      key={city.id}
+      className="text-white text-xl font-thin hover:underline hover:scale-110 transition-all duration-300"
+      onClick={() => setQuery({ q: city.title })}
+      style={{ width: '120px', height: '40px' }}
+    >
+      {city.title}
+    </button>
+  ))}
+</div>
+
+
+
+
+
 }
 
 export default TopButtons

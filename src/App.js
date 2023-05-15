@@ -32,22 +32,21 @@ function App() {
   }, [query]);
 
   return (
-    <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br 
-    h-fit shadow-xl shadow-gray-400 from-cyan-700 to-blue-700">
-      <TopButtons query={query} setQuery={setQuery} />
-      <Inputs query={query} setQuery={setQuery} /> 
+    <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-br from-cyan-700 to-blue-700">
+  <div className="flex justify-center space-x-4">
+    <TopButtons query={query} setQuery={setQuery} />
+  </div>
+  <Inputs query={query} setQuery={setQuery} /> 
 
-      {weather && (
-      <div>
+  {weather && (
+    <div className="flex flex-col items-center">
       <TimeAndLocation weather={weather}/>
-      <TemperatureAndDetails weather ={weather} units='F'/>
+      <TemperatureAndDetails weather={weather} units='F'/>
       {/* <Forecast title="hourly forecast"/>
       <Forecast title="daily forecast"/> */}
-      </div>
-      )}
-
-      
     </div>
+  )}
+</div>
   );
 }
 

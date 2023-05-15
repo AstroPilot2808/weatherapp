@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 
-//tempIndicator is a global variable that changes when units are converted
-
-//var tempIndicator = 'C'
-
 function Inputs({ setQuery }) {
   const [city, setCity] = useState("");
 
-  const handleSearchClick = () => {
-    if (isValidCity(city)) {
-      setQuery({ q: city });
-    }
-    else{
-      console.log("An error has occured")
+  const handleSearchClick = async () => {
+    const lowercaseCity = city.trim().toLowerCase();
+    const isValid = await isValidCity(lowercaseCity);
+    
+    if (isValid) {
+      setQuery({ q: lowercaseCity });
+    } else {
+      alert("Please Enter A Valid City!");
     }
   };
 
-  const validCityNames = ['New York', 'Los Angeles', 'London', 'Paris', 'Tokyo'];
+  async function isValidCity(cityName) {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`
+    );
+    const data = await response.json();
 
-  function isValidCity(cityName) {
-    const normalizedCityName = cityName.trim().toLowerCase();
-    return validCityNames.includes(normalizedCityName);
+    // Check if the API response contains a valid result
+    return data.length > 0;
   }
-
   const handleLocationClick = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -69,29 +69,30 @@ function Inputs({ setQuery }) {
   
 
   return (
-    <div className="flex flex-row justify-center my-6">
-      <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
-        <input
-          value={city}
-          onChange={(e) => setCity(e.currentTarget.value)}
-          type="text"
-          className="text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize"
-          placeholder="Search for city..."
-        />
+    <div className="flex justify-center my-6">
+  <div className="w-full max-w-screen-md flex items-center justify-center space-x-4">
+    <input
+      value={city}
+      onChange={(e) => setCity(e.currentTarget.value)}
+      type="text"
+      className="text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize"
+      placeholder="Search for city..."
+    />
 
-        <UilSearch
-          onClick={handleSearchClick}
-          size={25}
-          className="text-white transition ease-out hover:scale-125"
-          id="searchButton"
-        />
-        <UilLocationPoint
-          onClick={handleLocationClick}
-          size={25}
-          className="text-white transition ease-out hover:scale-125"
-        />
-      </div>
-    </div>
+    <UilSearch
+      onClick={handleSearchClick}
+      size={50}
+      className="text-white transition ease-out hover:scale-125"
+      id="searchButton"
+    />
+    <UilLocationPoint
+      onClick={handleLocationClick}
+      size={50}
+      className="text-white transition ease-out hover:scale-125"
+    />
+  </div>
+</div>
+
   );
   
 }

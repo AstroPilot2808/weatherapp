@@ -44,13 +44,14 @@ function TimeAndLocation({ weather }) {
 
   return (
     <div>
-      <div className="flex items-center justify-center my-6">
-        <p className="text-white text-xl font-extralight">Local: {toLocalInfo(dt, timezone)}</p>
-      </div>
-      <div className="flex items-center justify-center my-3">
-        <p className="text-white text-3xl font-thin">{`${name}, ${sys.country}`}</p>
-      </div>
-    </div>
+  <div className="flex items-center justify-center my-6">
+    <p className="text-white text-2xl font-extralight text-center">Local: {toLocalInfo(dt, timezone)}</p>
+  </div>
+  <div className="flex items-center justify-center my-3">
+    <p className="text-white text-4xl font-thin text-center">{`${name}, ${sys.country}`}</p>
+  </div>
+</div>
+
   );
 }
 

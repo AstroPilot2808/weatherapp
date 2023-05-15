@@ -13,7 +13,7 @@ function TimeAndLocation({ weather }) {
     const dateObject = new Date(milliseconds)
     let prevHr = dateObject.getHours()
     let updatedHr = null;
-    if (prevHr==0){
+    if (prevHr===0){
         updatedHr = 12
      }else if(prevHr>0 && prevHr<=12){
          updatedHr=prevHr

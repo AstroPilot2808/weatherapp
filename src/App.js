@@ -1,13 +1,10 @@
 import './App.css';
-import UilReact from '@iconscout/react-unicons/icons/uil-react';
 import TopButtons from './components/TopButtons';
 import Inputs from './components/Inputs';
 import TimeAndLocation from './components/TimeAndLocation';
 import TemperatureAndDetails from './components/TemperatureAndDetails';
-import Forecast from './components/Forecast';
 import getWeatherData from './services/weatherService';
 import { useEffect, useState } from 'react';
-import { DateTime } from 'luxon';
 
 function App() {
   const [query, setQuery] = useState({ q: 'pittsburgh' });

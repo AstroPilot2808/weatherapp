@@ -4,26 +4,21 @@ import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 function Inputs({ setQuery }) {
   const [city, setCity] = useState("");
 
-  const handleSearchClick = useCallback(async () => {
-    const lowercaseCity = city.trim().toLowerCase();
-    const isValid = await isValidCity(lowercaseCity);
-
-    if (isValid) {
-      setQuery({ q: lowercaseCity });
-    } else {
-      alert("Please Enter A Valid City!");
-    }
-  }, [city, isValidCity, setQuery]);
-
-  async function isValidCity(cityName) {
+  const handleSearchClick = async () => {
     const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName)}`
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`
     );
     const data = await response.json();
 
-    // Check if the API response contains a valid result
-    return data.length > 0;
-  }
+    const isValid = data.length > 0;
+
+    if (isValid) {
+      setQuery({ q: city.trim().toLowerCase() });
+    } else {
+      alert("Please Enter A Valid City!");
+    }
+  };
+
   const handleLocationClick = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {

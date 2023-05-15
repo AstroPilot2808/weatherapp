@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 
 function Inputs({ setQuery }) {
   const [city, setCity] = useState("");
 
-  const handleSearchClick = async () => {
+  const handleSearchClick = useCallback(async () => {
     const lowercaseCity = city.trim().toLowerCase();
     const isValid = await isValidCity(lowercaseCity);
-    
+
     if (isValid) {
       setQuery({ q: lowercaseCity });
     } else {
       alert("Please Enter A Valid City!");
     }
-  };
+  }, [city, isValidCity, setQuery]);
 
   async function isValidCity(cityName) {
     const response = await fetch(

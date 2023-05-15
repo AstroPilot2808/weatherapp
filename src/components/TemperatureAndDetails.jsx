@@ -8,7 +8,6 @@ import {
   UilSun,
   UilSunset,
 } from '@iconscout/react-unicons';
-import { iconUrlFromCode } from '../services/weatherService';
 
 function TemperatureAndDetails({ weather: weatherData, units }) {
   const [currentUnit, setCurrentUnit] = useState(units);

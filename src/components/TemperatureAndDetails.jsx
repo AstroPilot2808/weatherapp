@@ -41,9 +41,9 @@ function TemperatureAndDetails({ weather: weatherData, units }) {
       </button>
     </div>
   
-    <div className="flex floex row items-center justify-between text-white py-3">
+    <div className="flex floex row items-center justify-between text-white py-3 mr-8">
       <img src={iconUrl(weather[0].icon)} alt="" className="w-24" />
-      <p className="text-7xl">{convertTemperature(toF(main.temp))}°</p>
+      <p className="text-6xl sm:text-=7xl">{convertTemperature(toF(main.temp))}°</p>
       <div className="flex flex-col space-y-4">
         <div className="flex font-light text-lg items-center justify-center">
           <UilTemperature size={24} className="mr-2" />
@@ -62,7 +62,7 @@ function TemperatureAndDetails({ weather: weatherData, units }) {
         </div>
       </div>
     </div>
-    <div className="flex flex-row items-center justify-center space-x-4 text-white text-lg py-3">
+    <div className="flex flex-row items-center justify-center space-x-1 text-white text-lg py-3">
       <UilSun size={24} />
       <p className="font-light">Rise: <span className="font-medium ml-2">{toHHMM(sys.sunrise)}</span></p>
       <UilSunset size={24} />

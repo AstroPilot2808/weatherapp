@@ -68,14 +68,14 @@ function Inputs({ setQuery }) {
    // forceUpdate() //Triggers Re-render so that all weather values can be updated based on Celsius/Fahrenheit
   
 
-  return (
-    <div className="flex justify-center my-6">
-  <div className="w-full max-w-screen-md flex items-center justify-center space-x-4">
+   return (
+    <div className="flex flex-row justify-center my-6">
+  <div className="flex flex-row items-center justify-center space-x-4 max-w-screen-sm">
     <input
       value={city}
       onChange={(e) => setCity(e.currentTarget.value)}
       type="text"
-      className="text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize"
+      className="text-xl font-light p-2 w-full max-w-lg shadow-xl focus:outline-none capitalize"
       placeholder="Search for city..."
     />
 
@@ -93,8 +93,10 @@ function Inputs({ setQuery }) {
   </div>
 </div>
 
+
+
+
   );
-  
 }
 
 export default Inputs;
